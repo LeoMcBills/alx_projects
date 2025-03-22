@@ -1,8 +1,9 @@
 #include <stdio.h>
 
 /**
- * main: create array and slice it
- * Return: Success
+ * main - Creates arrays and demonstrates a ternary operation
+ *
+ * Return: 0 on success
  */
 
 int main(int ac, char **av, char **env){
@@ -11,10 +12,10 @@ int main(int ac, char **av, char **env){
 
 	int a = 13;
 
-	a? 12: 14;
+	a = (a ? 12 : 14);
 
 	printf("Result of the ternary condition above is %d\n", a);
 	printf("My array has been created!\n");
 
-	return (0);
+	return 0;
 }
