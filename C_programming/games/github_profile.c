@@ -5,7 +5,20 @@
 
 // Function to fetch data from GitHub API using curl
 void fetch_github_data() {
-    system("curl -s -H \"Authorization: token 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\" https://api.github.com/users/LeoMcBills > github_data.json");
+	// Get the Github token from the environment variable
+	const char *token = getenv("GITHUB_TOKEN");
+
+	if (token != NULL) {
+		// Construct the curl command with the token
+		char command[1024];
+		snprintf(command, sizeof(command), "curl -s -H \"Authorization: token %s\" https://api.github.com/users/LeoMcBills > github_data.json", token);
+
+		// Execute the curl command
+		system(command);
+	} else {
+		// If the token is not set or out of date, display an error message
+		fprintf(stderr, "Error: Github token not set or out of date in the environment variable.\n");
+	}
 }
 
 // Function to read specific data from JSON file
